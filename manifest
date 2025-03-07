@@ -1,0 +1,14 @@
+: 1
+name: libart-seafire-server
+version: 0.1.0-a.0.z
+language: c++
+summary: Seafire Server C++ library
+license: BSD-4-Clause
+description-file: README.md
+url: https://art.helloryan.se/
+email: art@helloryan.se
+depends: * build2 >= 0.17.0
+depends: * bpkg >= 0.17.0
+depends: libasio ^1.29.0
+depends: libart-seafire-common ^0.1.0-
+depends: libart-seafire-protocol ^0.1.0-

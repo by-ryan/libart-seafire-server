@@ -1,0 +1,37 @@
+#ifndef art__seafire__server__version_hxx_
+#define art__seafire__server__version_hxx_
+
+// The numeric version format is AAAAABBBBBCCCCCDDDE where:
+//
+// AAAAA - major version number
+// BBBBB - minor version number
+// CCCCC - bugfix version number
+// DDD   - alpha / beta (DDD + 500) version number
+// E     - final (0) / snapshot (1)
+//
+// When DDDE is not 0, 1 is subtracted from AAAAABBBBBCCCCC. For example:
+//
+// Version      AAAAABBBBBCCCCCDDDE
+//
+// 0.1.0        0000000001000000000
+// 0.1.2        0000000001000020000
+// 1.2.3        0000100002000030000
+// 2.2.0-a.1    0000200001999990010
+// 3.0.0-b.2    0000299999999995020
+// 2.2.0-a.1.z  0000200001999990011
+//
+#define LIBART_SEAFIRE_SERVER_VERSION       $libart_seafire_server.version.project_number$ULL
+#define LIBART_SEAFIRE_SERVER_VERSION_STR   "$libart_seafire_server.version.project$"
+#define LIBART_SEAFIRE_SERVER_VERSION_ID    "$libart_seafire_server.version.project_id$"
+#define LIBART_SEAFIRE_SERVER_VERSION_FULL  "$libart_seafire_server.version$"
+
+#define LIBART_SEAFIRE_SERVER_VERSION_MAJOR $libart_seafire_server.version.major$
+#define LIBART_SEAFIRE_SERVER_VERSION_MINOR $libart_seafire_server.version.minor$
+#define LIBART_SEAFIRE_SERVER_VERSION_PATCH $libart_seafire_server.version.patch$
+
+#define LIBART_SEAFIRE_SERVER_PRE_RELEASE   $libart_seafire_server.version.pre_release$
+
+#define LIBART_SEAFIRE_SERVER_SNAPSHOT_SN   $libart_seafire_server.version.snapshot_sn$ULL
+#define LIBART_SEAFIRE_SERVER_SNAPSHOT_ID   "$libart_seafire_server.version.snapshot_id$"
+
+#endif

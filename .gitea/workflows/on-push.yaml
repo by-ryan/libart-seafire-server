@@ -1,0 +1,31 @@
+name: on-push
+
+on:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - '**'
+
+jobs:
+  build-and-test:
+    runs-on: linux
+    container: code.helloryan.se/art/infra/buildenv/x86_64-fedora_42-unified:latest
+    volumes:
+      - /build
+    steps:
+      - name: Configure repository access
+        run: |
+          git config --global http.$GITHUB_SERVER_URL/.extraheader "Authorization: token ${{ secrets.ACT_RUNNER_TOKEN }}"
+      - name: Configure build directory
+        run: |
+          bpkg create -d /build cc config.cxx=clang++ config.cc.coptions="-Wall -Werror -Wno-unknown-pragmas"
+      - name: Build package
+        run: |
+          cd /build
+          bpkg build --yes --trust-yes $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git##$GITHUB_SHA
+      - name: Test package
+        run: |
+          cd /build
+          b test
+
